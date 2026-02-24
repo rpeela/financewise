@@ -1,0 +1,38 @@
+# robots.txt for FinanceWise
+# Author: Ravi Kumar Peela
+
+User-agent: *
+Allow: /
+Allow: /calculators/
+Allow: /guides/
+Allow: /resources/
+
+# Disallow admin and user areas (if you add them later)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /user/
+
+# Sitemap location
+Sitemap: https://financewise.pro/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Crawl-delay: 5
