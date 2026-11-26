@@ -1,4 +1,4 @@
-# robots.txt for FinanceWise
+# robots.txt for Financial Planning Tools
 # Author: Ravi Kumar Peela
 
 User-agent: *
