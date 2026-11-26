@@ -1,11 +1,11 @@
-# FinanceWise - Professional Financial Planning Platform
+# Financial Planning Tools
 
 **Author:** Ravi Kumar Peela  
-**Copyright:** © 2026 FinanceWise. All rights reserved.
+**Copyright:** © 2026 Financial Planning Tools. All rights reserved.
 
 ## 🎯 Overview
 
-FinanceWise is a professional-grade financial planning platform featuring 12+ interactive calculators with comprehensive guides, ROI optimization strategies, and data-driven insights. Built with vanilla JavaScript for maximum performance and compatibility.
+Financial Planning Tools is a professional-grade financial planning platform featuring 12+ interactive calculators with comprehensive guides, ROI optimization strategies, and data-driven insights. Built with vanilla JavaScript for maximum performance and compatibility.
 
 ## ✨ Features
 
@@ -65,6 +65,9 @@ financewise/
 ## 🚀 Quick Start
 
 ### Option 1: Static Hosting (Recommended for MVP)
+
+**Using a Git-connected Netlify project:**
+The repository's `netlify.toml` deploys the static site from the repository root without requiring a package manager or Makefile.
 
 **Using Netlify Drop:**
 1. Go to [netlify.com/drop](https://netlify.com/drop)
@@ -142,17 +145,12 @@ const CONFIG = {
 
 **Update all URLs in files:**
 - `index.html` - Update canonical URLs and meta tags
-- `sitemap.xml` - Replace `https://financewise.pro` with your domain
-- `financewise-app.js` - Update API endpoint
-
-```javascript
-const CONFIG = {
-    apiEndpoint: 'https://api.yourdomain.com',
-```
+- `sitemap.xml` - Update the sitemap URLs for your domain
+- `robots.txt` - Update the sitemap URL
 
 ### 4. Backend API (Optional - For Production)
 
-For full production with persistent user data, set up a backend:
+To persist user data on a live site, set up a backend:
 
 **Recommended Stack:**
 - **Node.js + Express** - API server
@@ -235,7 +233,7 @@ Ensure each calculator has unique meta descriptions for better SEO:
 **Recommendations:**
 - Enable CDN (Cloudflare)
 - Compress images
-- Minify CSS/JS for production
+- Minify CSS and JavaScript before deployment
 - Enable gzip compression
 - Add service worker for offline support
 
@@ -250,7 +248,7 @@ python -m http.server 8000
 # Using Node.js
 npx http-server
 
-# Then visit: http://localhost:8000
+# Then visit: http://127.0.0.1:8000
 ```
 
 ### Browser Testing
@@ -288,7 +286,7 @@ Tracked events:
 
 **Current Implementation (Client-Side):**
 - XSS protection via input validation
-- HTTPS required for production
+- Use HTTPS for the live site
 - Session timeout (1 hour)
 - Local storage encryption recommended
 
@@ -337,8 +335,7 @@ This software is proprietary and confidential. Unauthorized copying, distributio
 ## 🤝 Support
 
 For questions or support:
-- Email: support@financewise.pro
-- Documentation: https://docs.financewise.pro
+- Email: `support@example.com` (replace with your public support address)
 
 ## 🚀 Deployment Checklist
 

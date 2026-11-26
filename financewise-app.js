@@ -1,13 +1,12 @@
-// FinanceWise Application JavaScript
+// Financial Planning Tools Application JavaScript
 // Author: Ravi Kumar Peela
-// Copyright © 2026 FinanceWise
+// Copyright © 2026 Financial Planning Tools
 
 // ==========================================
 // CONFIGURATION & INITIALIZATION
 // ==========================================
 
 const CONFIG = {
-    apiEndpoint: 'https://api.financewise.pro', // Replace with your actual API endpoint
     googleClientId: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
     enableLocalStorage: true,
     sessionTimeout: 3600000, // 1 hour in milliseconds
@@ -197,12 +196,11 @@ function handleGoogleSignIn(response) {
 
 // Sign in with Google (fallback if SDK doesn't load)
 function signInWithGoogle() {
-    // In production, this would trigger Google OAuth flow
     // For demo purposes, simulate successful login
     const userData = {
         id: 'demo_' + Date.now(),
         name: 'Demo User',
-        email: 'demo@financewise.pro',
+        email: 'demo@example.com',
         method: 'google'
     };
     
@@ -878,7 +876,7 @@ function openAuthModal(mode) {
         title.textContent = 'Create Your Free Account';
         footerText.textContent = 'Already have an account?';
     } else {
-        title.textContent = 'Welcome to FinanceWise';
+        title.textContent = 'Welcome to Financial Planning Tools';
         footerText.textContent = "Don't have an account?";
     }
     
@@ -902,7 +900,7 @@ function toggleAuthMode(e) {
         title.textContent = 'Create Your Free Account';
         footerText.textContent = 'Already have an account?';
     } else {
-        title.textContent = 'Welcome to FinanceWise';
+        title.textContent = 'Welcome to Financial Planning Tools';
         footerText.textContent = "Don't have an account?";
     }
 }
@@ -952,6 +950,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Track page view
     trackEvent('Page', 'view', 'Homepage');
     
-    console.log('FinanceWise initialized successfully');
+    console.log('Financial Planning Tools initialized successfully');
     console.log('© 2026 Ravi Kumar Peela');
 });

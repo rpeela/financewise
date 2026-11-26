@@ -1,0 +1,8 @@
+[build]
+  base = "."
+  command = "mkdir -p dist && cp index.html financewise-app.js robots.txt sitemap.xml dist/"
+  publish = "dist"
+
+[build.environment]
+  # Exact matches for public metadata and incidental matches in asset paths, prose, and numeric defaults.
+  SECRETS_SCAN_OMIT_KEYS = "APP_AUTHOR,APP_URL,DOMAIN_NAME,SEARCH_CONSOLE_PROPERTY,PRIVACY_POLICY_URL,TERMS_OF_SERVICE_URL,MONGODB_DB_NAME,POSTGRES_DB,LOG_LEVEL,SESSION_TIMEOUT,CACHE_TTL,API_TIMEOUT"
