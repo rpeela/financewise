@@ -6,7 +6,7 @@
     
     <!-- SEO Optimization with Schema.org -->
     <title>FinanceWise - Professional Financial Planning Tools & Calculators | Buy vs Rent, Investment ROI, Retirement Planning</title>
-    <meta name="description" content="Enterprise-grade financial calculators trusted by 500K+ professionals. Buy vs Rent Calculator, Mortgage Affordability, Cash on Cash Return, Debt Payoff Planner, Investment ROI, Retirement Calculator. Expert guidance with comprehensive ROI optimization strategies.">
+    <meta name="description" content="Free financial calculators with clear guides. Buy vs Rent Calculator, Mortgage Affordability, Cash on Cash Return, Debt Payoff Planner, Investment ROI, Retirement Calculator. Expert guidance with comprehensive ROI optimization strategies.">
     <meta name="keywords" content="buy vs rent calculator, mortgage calculator, mortgage affordability calculator, cash on cash return calculator, debt payoff calculator, snowball vs avalanche method, emergency fund calculator, compound interest calculator, retirement calculator, 401k calculator, IRA calculator, investment return calculator, ROI calculator, refinance calculator, net worth calculator, credit card rewards calculator, payment method comparison, real estate investment calculator, rental property calculator, financial planning tools, personal finance calculator, wealth management, financial decision making">
     
     <link rel="canonical" href="https://financewise.pro">
@@ -55,30 +55,14 @@
     }
     </script>
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX', {
-            'send_page_view': true,
-            'anonymize_ip': true
-        });
-        
-        // Custom event tracking function
+        // Analytics: add a Google Analytics ID here to enable tracking.
         function trackEvent(category, action, label, value) {
-            gtag('event', action, {
-                'event_category': category,
-                'event_label': label,
-                'value': value
-            });
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', action, { event_category: category, event_label: label, value: value });
+            }
         }
     </script>
-    
-    <!-- Google Sign-In -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <meta name="google-signin-client_id" content="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1404,6 +1388,76 @@
                     </div>
                 </div>
 
+
+                <div class="calculator-card" onclick="openCalculator('cash-on-cash'); trackEvent('Calculator', 'open', 'Cash on Cash Return');">
+                    <div class="card-icon">🏘️</div>
+                    <h3 class="card-title">Cash on Cash Return</h3>
+                    <p class="card-description">Measure annual cash flow against the cash you invest in a rental property, plus cap rate.</p>
+                    <div class="card-tags"><span class="tag">Real Estate</span></div>
+                </div>
+
+                <div class="calculator-card" onclick="openCalculator('credit-card'); trackEvent('Calculator', 'open', 'Credit Card Benefits Optimizer');">
+                    <div class="card-icon">💳</div>
+                    <h3 class="card-title">Credit Card Benefits Optimizer</h3>
+                    <p class="card-description">See the real yearly value of your card rewards after fees and interest.</p>
+                    <div class="card-tags"><span class="tag">Rewards</span></div>
+                </div>
+
+                <div class="calculator-card" onclick="openCalculator('debt-payoff'); trackEvent('Calculator', 'open', 'Debt Payoff Planner');">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Debt Payoff Planner</h3>
+                    <p class="card-description">Compare snowball vs avalanche strategies and see your debt-free date.</p>
+                    <div class="card-tags"><span class="tag">Debt</span></div>
+                </div>
+
+                <div class="calculator-card" onclick="openCalculator('emergency-fund'); trackEvent('Calculator', 'open', 'Emergency Fund Calculator');">
+                    <div class="card-icon">🛟</div>
+                    <h3 class="card-title">Emergency Fund Calculator</h3>
+                    <p class="card-description">Get a personalized safety-net target and time to reach it.</p>
+                    <div class="card-tags"><span class="tag">Savings</span></div>
+                </div>
+
+                <div class="calculator-card" onclick="openCalculator('mortgage-affordability'); trackEvent('Calculator', 'open', 'Mortgage Affordability');">
+                    <div class="card-icon">🔑</div>
+                    <h3 class="card-title">Mortgage Affordability</h3>
+                    <p class="card-description">Find your true buying power using the 28/36 rule.</p>
+                    <div class="card-tags"><span class="tag">Real Estate</span></div>
+                </div>
+
+                <div class="calculator-card" onclick="openCalculator('retirement'); trackEvent('Calculator', 'open', 'Retirement Savings Planner');">
+                    <div class="card-icon">🏖️</div>
+                    <h3 class="card-title">Retirement Savings Planner</h3>
+                    <p class="card-description">Project your 401k/IRA balance and compare it to your retirement goal.</p>
+                    <div class="card-tags"><span class="tag">Retirement</span></div>
+                </div>
+
+                <div class="calculator-card" onclick="openCalculator('net-worth'); trackEvent('Calculator', 'open', 'Net Worth Tracker');">
+                    <div class="card-icon">💎</div>
+                    <h3 class="card-title">Net Worth Tracker</h3>
+                    <p class="card-description">Total your assets and liabilities for a complete wealth snapshot.</p>
+                    <div class="card-tags"><span class="tag">Wealth</span></div>
+                </div>
+
+                <div class="calculator-card" onclick="openCalculator('refinance'); trackEvent('Calculator', 'open', 'Refinance Analyzer');">
+                    <div class="card-icon">🔄</div>
+                    <h3 class="card-title">Refinance Analyzer</h3>
+                    <p class="card-description">Calculate monthly savings and the break-even point of refinancing.</p>
+                    <div class="card-tags"><span class="tag">Mortgage</span></div>
+                </div>
+
+                <div class="calculator-card" onclick="openCalculator('investment-return'); trackEvent('Calculator', 'open', 'Investment Return Calculator');">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Investment Return Calculator</h3>
+                    <p class="card-description">Find total ROI, annualized return, and after-tax gains.</p>
+                    <div class="card-tags"><span class="tag">Investment</span></div>
+                </div>
+
+                <div class="calculator-card" onclick="openCalculator('payment-method'); trackEvent('Calculator', 'open', 'Payment Method Comparator');">
+                    <div class="card-icon">💵</div>
+                    <h3 class="card-title">Payment Method Comparator</h3>
+                    <p class="card-description">Compare the yearly value of paying with cash, debit, or credit.</p>
+                    <div class="card-tags"><span class="tag">Spending</span></div>
+                </div>
                 <!-- Add more calculator cards as needed -->
             </div>
         </div>
@@ -1457,58 +1511,30 @@
             </div>
 
             <div class="auth-methods">
-                <div id="g_id_onload"
-                     data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
-                     data-callback="handleGoogleSignIn">
-                </div>
-                <button class="auth-button" onclick="signInWithGoogle(); trackEvent('Auth', 'click', 'Google Sign-in');">
-                    <svg width="24" height="24" viewBox="0 0 24 24">
-                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                    </svg>
+                <button class="auth-button" type="button" onclick="signInWithGoogle(); trackEvent('Auth', 'click', 'Google Sign-in');">
+                    <span style="font-size: 1.5rem;">🔐</span>
                     Continue with Google
-                </button>
-
-                <button class="auth-button" onclick="showEmailForm(); trackEvent('Auth', 'click', 'Email Form');">
-                    <span style="font-size: 1.5rem;">📧</span>
-                    Continue with Email
-                </button>
-
-                <button class="auth-button" onclick="showPhoneForm(); trackEvent('Auth', 'click', 'Phone Form');">
-                    <span style="font-size: 1.5rem;">📱</span>
-                    Continue with Phone
                 </button>
             </div>
 
-            <div class="divider">or</div>
+            <div class="divider">or use email</div>
 
-            <form class="auth-form" id="emailForm" onsubmit="handleEmailAuth(event)">
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-input" id="authEmail" placeholder="your@email.com" required>
-                    <span class="form-error" id="emailError">Please enter a valid email</span>
+            <form class="auth-form active" id="emailForm" onsubmit="handleEmailAuth(event)">
+                <div class="form-group" id="nameGroup" style="display:none;">
+                    <label class="form-label" for="authName">Full Name</label>
+                    <input type="text" class="form-input" id="authName" placeholder="Jane Doe" autocomplete="name">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-input" id="authPassword" placeholder="Min 8 characters" required minlength="8">
-                    <span class="form-error" id="passwordError">Password must be at least 8 characters</span>
+                    <label class="form-label" for="authEmail">Email</label>
+                    <input type="email" class="form-input" id="authEmail" placeholder="your@email.com" required autocomplete="email">
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="emailAuthBtn">
-                    Continue
-                </button>
-            </form>
-
-            <form class="auth-form" id="phoneForm" onsubmit="handlePhoneAuth(event)">
-                <div class="form-group">
-                    <label class="form-label">Phone Number</label>
-                    <input type="tel" class="form-input" id="authPhone" placeholder="+1 (555) 000-0000" required pattern="[\+]?[0-9]{10,}">
-                    <span class="form-error" id="phoneError">Please enter a valid phone number</span>
+                <div class="form-group" id="passwordGroup">
+                    <label class="form-label" for="authPassword">Password</label>
+                    <input type="password" class="form-input" id="authPassword" placeholder="Min 8 characters" minlength="8" autocomplete="current-password">
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="phoneAuthBtn">
-                    Send Verification Code
-                </button>
+                <span class="form-error" id="authError" role="alert"></span>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="emailAuthBtn">Sign In</button>
+                <p style="text-align:center;margin-top:0.75rem;"><a href="#" class="auth-link" id="forgotLink" onclick="showForgotPassword(event)">Forgot password?</a></p>
             </form>
 
             <div class="auth-footer">
@@ -1525,17 +1551,17 @@
                 <div class="footer-brand">
                     <h4>FinanceWise</h4>
                     <p>
-                        Professional financial planning tools trusted by hundreds of thousands worldwide. 
+                        Free, easy-to-use financial planning tools. 
                         Make informed decisions with expert calculators and comprehensive guidance.
                     </p>
                 </div>
                 <div class="footer-section">
                     <h4>Tools</h4>
                     <ul class="footer-links">
-                        <li><a href="#buy-rent" onclick="trackEvent('Footer', 'click', 'Buy vs Rent')">Buy vs Rent</a></li>
-                        <li><a href="#cash-on-cash">Cash on Cash Return</a></li>
-                        <li><a href="#debt-payoff">Debt Payoff</a></li>
-                        <li><a href="#retirement">Retirement Planning</a></li>
+                        <li><a href="#buy-rent" onclick="event.preventDefault(); openCalculator('buy-rent'); trackEvent('Footer', 'click', 'Buy vs Rent')">Buy vs Rent</a></li>
+                        <li><a href="#cash-on-cash" onclick="event.preventDefault(); openCalculator('cash-on-cash'); trackEvent('Footer', 'click', 'Cash on Cash Return')">Cash on Cash Return</a></li>
+                        <li><a href="#debt-payoff" onclick="event.preventDefault(); openCalculator('debt-payoff'); trackEvent('Footer', 'click', 'Debt Payoff')">Debt Payoff</a></li>
+                        <li><a href="#retirement" onclick="event.preventDefault(); openCalculator('retirement'); trackEvent('Footer', 'click', 'Retirement Planning')">Retirement Planning</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1568,5 +1594,6 @@
     </footer>
 
     <script src="financewise-app.js"></script>
+    <script type="module" src="auth.js"></script>
 </body>
 </html>
