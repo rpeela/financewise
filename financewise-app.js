@@ -1400,7 +1400,14 @@ function runCalculator(calculatorId) {
     }
 
     // Calculate
-    const results = def.calculate(values);
+    let results;
+    try {
+        results = def.calculate(values);
+    } catch (error) {
+        console.error(`Calculator failed: ${calculatorId}`, error);
+        showToast('Unable to calculate this result. Check the inputs and try again.', 'error');
+        return;
+    }
 
     // Render results
     const cardsHTML = results.cards.map(card => `
