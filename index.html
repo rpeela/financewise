@@ -3,55 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Optimization with Schema.org -->
-    <title>FinanceWise - Professional Financial Planning Tools & Calculators | Buy vs Rent, Investment ROI, Retirement Planning</title>
-    <meta name="description" content="Enterprise-grade financial calculators trusted by 500K+ professionals. Buy vs Rent Calculator, Mortgage Affordability, Cash on Cash Return, Debt Payoff Planner, Investment ROI, Retirement Calculator. Expert guidance with comprehensive ROI optimization strategies.">
-    <meta name="keywords" content="buy vs rent calculator, mortgage calculator, mortgage affordability calculator, cash on cash return calculator, debt payoff calculator, snowball vs avalanche method, emergency fund calculator, compound interest calculator, retirement calculator, 401k calculator, IRA calculator, investment return calculator, ROI calculator, refinance calculator, net worth calculator, credit card rewards calculator, payment method comparison, real estate investment calculator, rental property calculator, financial planning tools, personal finance calculator, wealth management, financial decision making">
-    
-    <link rel="canonical" href="https://financewise.pro">
+
+    <!-- Search and sharing metadata -->
+    <title>Free Financial Calculators &amp; Planning Tools | FinanceWise</title>
+    <meta name="description" content="Compare buying vs. renting, plan debt payoff, estimate mortgage affordability, and explore investing and retirement scenarios with free FinanceWise calculators.">
+    <link rel="canonical" href="https://financewise.pro/">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="Ravi Kumar Peela">
-    
+    <meta name="theme-color" content="#1a3a2a">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="/site.webmanifest">
+
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://financewise.pro">
-    <meta property="og:title" content="FinanceWise - Professional Financial Planning Calculators">
-    <meta property="og:description" content="Make smarter financial decisions with 12+ professional calculators. Free tools with expert guidance for real estate, investment, debt management, and retirement planning.">
+    <meta property="og:url" content="https://financewise.pro/">
+    <meta property="og:title" content="Free Financial Calculators &amp; Planning Tools | FinanceWise">
+    <meta property="og:description" content="Compare buying vs. renting, plan debt payoff, and explore mortgage, investing, and retirement scenarios with free financial calculators.">
     <meta property="og:site_name" content="FinanceWise">
-    <meta property="og:image" content="https://financewise.pro/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://financewise.pro/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="FinanceWise free financial calculators and planning tools">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FinanceWise - Financial Planning Calculators">
-    <meta name="twitter:description" content="Professional financial calculators with comprehensive guides and ROI optimization strategies.">
-    <meta name="twitter:image" content="https://financewise.pro/twitter-image.jpg">
-    <meta name="twitter:creator" content="@ravipeela">
+    <meta name="twitter:title" content="Free Financial Calculators &amp; Planning Tools | FinanceWise">
+    <meta name="twitter:description" content="Compare buying vs. renting, plan debt payoff, and explore mortgage, investing, and retirement scenarios with free financial calculators.">
+    <meta name="twitter:image" content="https://financewise.pro/og-image.png">
+    <meta name="twitter:image:alt" content="FinanceWise free financial calculators and planning tools">
     
-    <!-- Schema.org Structured Data -->
+    <!-- Structured data describes the free tools without unverifiable reviews or ratings. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "FinanceWise",
-      "description": "Professional financial planning calculators and tools",
-      "url": "https://financewise.pro",
-      "applicationCategory": "FinanceApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Ravi Kumar Peela"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "50000",
-        "bestRating": "5",
-        "worstRating": "1"
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://financewise.pro/#website",
+          "name": "FinanceWise",
+          "url": "https://financewise.pro/",
+          "inLanguage": "en-US",
+          "description": "Free financial calculators for housing, debt, investing, and retirement planning."
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://financewise.pro/#app",
+          "name": "FinanceWise Financial Calculators",
+          "url": "https://financewise.pro/",
+          "description": "Free interactive calculators for comparing buying and renting, planning debt payoff, estimating mortgage affordability, and exploring savings and investment scenarios.",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Any",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Ravi Kumar Peela"
+          },
+          "isPartOf": {
+            "@id": "https://financewise.pro/#website"
+          }
+        }
+      ]
     }
     </script>
     
@@ -59,27 +75,30 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVJQR6M29L"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-JVJQR6M29L', {
+        window.gtag = window.gtag || function() {
+            window.dataLayer.push(arguments);
+        };
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-JVJQR6M29L', {
             'send_page_view': true,
             'anonymize_ip': true
         });
-        
-        // Custom event tracking function
+
         function trackEvent(category, action, label, value) {
-            gtag('event', action, {
-                'event_category': category,
-                'event_label': label,
-                'value': value
-            });
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', action, {
+                    'event_category': category,
+                    'event_label': label,
+                    'value': value
+                });
+            }
         }
     </script>
     
     <!-- Google Sign-In -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <meta name="google-signin-client_id" content="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1284,15 +1303,14 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span>⭐</span>
-                    <span>Trusted by 500,000+ Professionals</span>
+                    <span>Free financial planning calculators</span>
                 </div>
                 <h1>
-                    Make <span class="hero-highlight">Smarter</span><br>
-                    Financial Decisions
+                    Plan Your <span class="hero-highlight">Financial</span><br>
+                    Next Steps
                 </h1>
                 <p class="hero-subtitle">
-                    Professional-grade calculators with comprehensive guides and ROI optimization strategies. 
-                    From real estate to retirement planning—every decision backed by data.
+                    Compare buying with renting, estimate mortgage affordability, plan debt payoff, and project savings with free calculators and practical guides.
                 </p>
                 <div class="hero-cta">
                     <button class="btn btn-primary btn-large" onclick="document.querySelector('.calculators-grid').scrollIntoView({behavior: 'smooth'}); trackEvent('Navigation', 'click', 'Hero CTA - Explore');">
@@ -1305,15 +1323,15 @@
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-number">12+</div>
-                        <div class="stat-label">Pro Tools</div>
+                        <div class="stat-label">Calculators</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">$2B+</div>
-                        <div class="stat-label">Analyzed</div>
+                        <div class="stat-number">Free</div>
+                        <div class="stat-label">To use</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">4.9★</div>
-                        <div class="stat-label">Rating</div>
+                        <div class="stat-number">No</div>
+                        <div class="stat-label">Sign-in required</div>
                     </div>
                 </div>
             </div>
@@ -1322,20 +1340,20 @@
                     <div style="margin-bottom: 1.5rem;">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
                         <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--forest); margin-bottom: 0.5rem;">
-                            Professional Calculators
+                            Financial Calculators
                         </div>
                         <div style="color: var(--text-secondary);">
-                            Comprehensive analysis with expert guidance
+                            Clear estimates for everyday money decisions
                         </div>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div style="padding: 1rem; background: var(--cream); border-radius: 8px;">
-                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.25rem;">ROI Analysis</div>
-                            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">$50K+</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Housing</div>
+                            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">Buy or rent</div>
                         </div>
                         <div style="padding: 1rem; background: var(--cream); border-radius: 8px;">
-                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Optimization</div>
-                            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">Expert</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Debt payoff</div>
+                            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">Plan ahead</div>
                         </div>
                     </div>
                 </div>
@@ -1350,8 +1368,7 @@
                 <div class="section-badge">Financial Tools</div>
                 <h2 class="section-title">Professional Calculators</h2>
                 <p class="section-subtitle">
-                    Enterprise-grade tools with detailed guides, pros & cons analysis, 
-                    and comprehensive ROI optimization strategies
+                    Explore calculators for housing, debt, real estate, saving, investing, and retirement.
                 </p>
             </div>
 
@@ -1370,12 +1387,12 @@
                     </div>
                     <div class="card-footer">
                         <div class="card-metric">
-                            <span>Avg. Decision Value</span>
-                            <span class="card-metric-value">$50,000+</span>
+                            <span>Calculator Type</span>
+                            <span class="card-metric-value">Buy or rent</span>
                         </div>
                         <div class="card-metric">
-                            <span>User Rating</span>
-                            <span class="card-metric-value">⭐ 4.9/5.0</span>
+                            <span>Planning Horizon</span>
+                            <span class="card-metric-value">Long term</span>
                         </div>
                     </div>
                 </div>
@@ -1445,10 +1462,6 @@
                             <span>Target Return</span>
                             <span class="card-metric-value">8–12%</span>
                         </div>
-                        <div class="card-metric">
-                            <span>User Rating</span>
-                            <span class="card-metric-value">⭐ 4.8/5.0</span>
-                        </div>
                     </div>
                 </div>
 
@@ -1457,17 +1470,17 @@
                     <div class="card-icon">🎯</div>
                     <h3 class="card-title">Debt Payoff Calculator</h3>
                     <p class="card-description">
-                        See exactly when your debt disappears and how much an extra payment saves you in interest and months. Plan your avalanche or snowball strategy.
+                        Compare your current monthly payment with an extra-payment plan to estimate payoff time and interest for your total debt.
                     </p>
                     <div class="card-tags">
                         <span class="tag">Debt</span>
-                        <span class="tag">Snowball</span>
-                        <span class="tag">Avalanche</span>
+                        <span class="tag">Extra Payments</span>
+                        <span class="tag">Payoff Estimate</span>
                     </div>
                     <div class="card-footer">
                         <div class="card-metric">
-                            <span>Avg. Interest Saved</span>
-                            <span class="card-metric-value">$1,000+</span>
+                            <span>Compare Plans</span>
+                            <span class="card-metric-value">Current vs Extra</span>
                         </div>
                         <div class="card-metric">
                             <span>Importance</span>
@@ -1518,8 +1531,8 @@
                             <span class="card-metric-value">4% Rule</span>
                         </div>
                         <div class="card-metric">
-                            <span>User Rating</span>
-                            <span class="card-metric-value">⭐ 4.9/5.0</span>
+                            <span>Calculator Type</span>
+                            <span class="card-metric-value">Compound growth</span>
                         </div>
                     </div>
                 </div>
@@ -1565,10 +1578,6 @@
                             <span>Rule of Thumb</span>
                             <span class="card-metric-value">0.75% Drop</span>
                         </div>
-                        <div class="card-metric">
-                            <span>User Rating</span>
-                            <span class="card-metric-value">⭐ 4.8/5.0</span>
-                        </div>
                     </div>
                 </div>
 
@@ -1612,10 +1621,6 @@
                         <div class="card-metric">
                             <span>Good Target</span>
                             <span class="card-metric-value">2%+ Net</span>
-                        </div>
-                        <div class="card-metric">
-                            <span>User Rating</span>
-                            <span class="card-metric-value">⭐ 4.7/5.0</span>
                         </div>
                     </div>
                 </div>
@@ -1763,17 +1768,16 @@
                 <div class="footer-brand">
                     <h4>FinanceWise</h4>
                     <p>
-                        Professional financial planning tools trusted by hundreds of thousands worldwide. 
-                        Make informed decisions with expert calculators and comprehensive guidance.
+                        Free financial calculators help you compare scenarios, plan ahead, and make informed decisions.
                     </p>
                 </div>
                 <div class="footer-section">
                     <h4>Tools</h4>
                     <ul class="footer-links">
-                        <li><a href="#calculators" onclick="openCalculator('buy-rent')">Buy vs Rent</a></li>
-                        <li><a href="#calculators" onclick="openCalculator('cash-on-cash')">Cash on Cash Return</a></li>
-                        <li><a href="#calculators" onclick="openCalculator('debt-payoff')">Debt Payoff</a></li>
-                        <li><a href="#calculators" onclick="openCalculator('retirement')">Retirement Planning</a></li>
+                        <li><a href="#buy-rent" onclick="event.preventDefault(); openCalculator('buy-rent'); trackEvent('Footer', 'click', 'Buy vs Rent')">Buy vs Rent</a></li>
+                        <li><a href="#cash-on-cash" onclick="event.preventDefault(); openCalculator('cash-on-cash'); trackEvent('Footer', 'click', 'Cash on Cash Return')">Cash on Cash Return</a></li>
+                        <li><a href="#debt-payoff" onclick="event.preventDefault(); openCalculator('debt-payoff'); trackEvent('Footer', 'click', 'Debt Payoff')">Debt Payoff</a></li>
+                        <li><a href="#retirement" onclick="event.preventDefault(); openCalculator('retirement'); trackEvent('Footer', 'click', 'Retirement Planning')">Retirement Planning</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

@@ -89,14 +89,14 @@ function remainingBalance(principal, annualRatePct, loanTermYears, monthsElapsed
 function payoffSchedule(balance, aprPct, payment) {
     const r = aprPct / 100 / 12;
     let bal = balance, interest = 0, months = 0;
-    if (payment <= bal * r) return null;
+    if (payment <= bal * r) return { months, interest, paidOff: false };
     while (bal > 0 && months < 1200) {
         const int = bal * r;
         interest += int;
         bal = bal + int - payment;
         months++;
     }
-    return { months, interest };
+    return { months, interest, paidOff: bal <= 0 };
 }
 
 // Solve for the annualized return (CAGR) of an investment with annual contributions via bisection.
@@ -269,18 +269,24 @@ function signInWithGoogle() {
 function handleEmailAuth(event) {
     event.preventDefault();
 
-    const email = document.getElementById('authEmail').value;
+    const email = document.getElementById('authEmail').value.trim();
     const password = document.getElementById('authPassword').value;
     const btn = document.getElementById('emailAuthBtn');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
 
-    // Validate
+    emailError.classList.remove('active');
+    passwordError.classList.remove('active');
+
     if (!validateEmail(email)) {
-        document.getElementById('emailError').classList.add('active');
+        emailError.textContent = 'Enter a valid email address.';
+        emailError.classList.add('active');
         return;
     }
 
     if (password.length < 8) {
-        document.getElementById('passwordError').classList.add('active');
+        passwordError.textContent = 'Password must be at least 8 characters.';
+        passwordError.classList.add('active');
         return;
     }
 
@@ -551,6 +557,21 @@ const CalculatorRegistry = {
             const maxTotalDebt = grossMonthly * (v.dtiRatio / 100);
             const maxHousing = maxTotalDebt - v.monthlyDebts;
 
+            if (grossMonthly <= 0) {
+                return {
+                    header: 'Affordability Results',
+                    cards: [
+                        { label: 'Max Affordable Home Price', value: 'Unavailable', cls: 'negative', subtext: 'Gross annual income is required' },
+                        { label: 'Monthly Debt Payments', value: formatCurrency(v.monthlyDebts), subtext: 'Current monthly obligations' },
+                        { label: 'Allowable Housing Budget', value: 'Unavailable', cls: 'negative', subtext: 'Enter gross annual income to calculate' }
+                    ],
+                    recommendation: {
+                        title: '💡 Enter Your Income',
+                        body: '<p>Enter gross annual income greater than $0 to calculate an affordability estimate using your debt-to-income ratio.</p>'
+                    }
+                };
+            }
+
             if (maxHousing <= 0) {
                 return {
                     header: 'Affordability Results',
@@ -681,20 +702,36 @@ const CalculatorRegistry = {
         calculate: function(v) {
             const current = payoffSchedule(v.balance, v.apr, v.monthlyPayment);
             const accelerated = payoffSchedule(v.balance, v.apr, v.monthlyPayment + v.extraPayment);
+            const currentPaidOff = current.paidOff;
+            const acceleratedPaidOff = accelerated.paidOff;
+            const monthlyInterest = v.balance * v.apr / 100 / 12;
 
-            if (!current) {
+            if (!currentPaidOff || !acceleratedPaidOff) {
+                const currentStatus = currentPaidOff
+                    ? `${current.months} months`
+                    : v.monthlyPayment <= monthlyInterest
+                        ? 'Does not reduce the balance'
+                        : 'Not paid off within 100 years';
+                const acceleratedPayment = v.monthlyPayment + v.extraPayment;
+                const acceleratedStatus = acceleratedPaidOff
+                    ? `${accelerated.months} months`
+                    : acceleratedPayment <= monthlyInterest
+                        ? 'Does not reduce the balance'
+                        : 'Not paid off within 100 years';
+
                 return {
                     header: 'Payoff Analysis',
                     cards: [
-                        { label: 'Status', value: 'Never Paid Off', cls: 'negative', subtext: 'Payment below monthly interest' },
-                        { label: 'Monthly Interest', value: formatCurrency(v.balance * v.apr / 100 / 12), subtext: `At ${v.apr}% APR` },
-                        { label: 'Minimum Required Payment', value: formatCurrency(v.balance * v.apr / 100 / 12 + 1), cls: 'negative', subtext: 'Just to reduce the balance' }
+                        { label: 'Current Payment Plan', value: currentPaidOff ? currentStatus : 'Not Paid Off', cls: currentPaidOff ? '' : 'negative', subtext: currentPaidOff ? 'Estimated payoff time' : currentStatus },
+                        { label: 'With Extra Payment', value: acceleratedPaidOff ? acceleratedStatus : 'Not Paid Off', cls: acceleratedPaidOff ? 'positive' : 'negative', subtext: acceleratedPaidOff ? 'Estimated payoff time' : acceleratedStatus },
+                        { label: 'Current Plan Interest', value: currentPaidOff ? formatCurrency(current.interest) : 'Unavailable', subtext: currentPaidOff ? 'Total interest through payoff' : 'Plan does not finish' },
+                        { label: 'Extra Payment Plan Interest', value: acceleratedPaidOff ? formatCurrency(accelerated.interest) : 'Unavailable', subtext: acceleratedPaidOff ? 'Total interest through payoff' : 'Plan does not finish' }
                     ],
                     recommendation: {
-                        title: '💡 Recommendation: Increase Your Payment',
-                        body: `<p>Your payment of <strong>${formatCurrency(v.monthlyPayment)}</strong> is less than the monthly interest of
-                        <strong>${formatCurrency(v.balance * v.apr / 100 / 12)}</strong> at ${v.apr}% APR, so this debt would never be paid off.</p>
-                        <p>Increase your payment above ${formatCurrency(v.balance * v.apr / 100 / 12)} — or pursue a lower interest rate through consolidation or a balance transfer.</p>`
+                        title: '💡 Payoff Plan Status',
+                        body: `<p>At ${formatCurrency(v.monthlyPayment)} per month, the current plan: <strong>${currentStatus}</strong>.</p>
+                        <p>With an extra ${formatCurrency(v.extraPayment)} per month, the plan: <strong>${acceleratedStatus}</strong>.</p>
+                        <p>A payoff time or total interest is shown only when the plan fully pays off the balance within 100 years.</p>`
                     }
                 };
             }
@@ -716,17 +753,17 @@ const CalculatorRegistry = {
                     <strong>${current.months} months</strong> and costs <strong>${formatCurrency(current.interest)}</strong> in interest.</p>
                     <p>Adding ${formatCurrency(v.extraPayment)} per month pays it off
                     <strong>${savedMonths} months sooner</strong> and saves <strong>${formatCurrency(savedInterest)}</strong> in interest.</p>
-                    <p><strong>Strategy tip:</strong> Use the avalanche method (highest APR first) to minimize interest, or the snowball method (smallest balance first) for motivation wins.</p>`
+                    <p><strong>Tip:</strong> Compare the extra-payment plan against your current payment to see how much sooner this balance could be paid off.</p>`
                 }
             };
         },
         guide: `
             <h3>Getting Out of Debt Faster</h3>
-            <p>Every extra dollar above the interest charge reduces your principal, which shrinks every future interest charge.</p>
+            <p>This calculator models one total debt balance and compares your current monthly payment with an extra-payment plan.</p>
             <h4>Key Concepts:</h4>
             <ul>
-                <li><strong>Avalanche Method:</strong> Pay minimums on everything, extra on the highest APR — mathematically optimal</li>
-                <li><strong>Snowball Method:</strong> Extra on the smallest balance first — builds momentum</li>
+                <li><strong>Extra Payments:</strong> Payments above monthly interest reduce your balance faster</li>
+                <li><strong>Payoff Estimate:</strong> A payoff time is shown only when the balance reaches zero within the projection horizon</li>
                 <li><strong>Minimum Payment Trap:</strong> Paying only minimums on high-APR debt can take decades</li>
                 <li><strong>Balance Transfers:</strong> 0% APR offers can pause interest, but watch transfer fees</li>
             </ul>`
@@ -1192,7 +1229,7 @@ function cashDiscountPctLabel(pct) {
 
 let currentCalculator = null;
 
-function buildFormHTML(def, calcId) {
+function buildFormHTML(def, calculatorId) {
     const fieldsHTML = def.fields.map(f => {
         const help = f.help ? `<span class="form-help">${f.help}</span>` : '';
         if (f.type === 'select') {
@@ -1201,7 +1238,7 @@ function buildFormHTML(def, calcId) {
             ).join('');
             return `<div class="form-group">
                 <label class="form-label">${f.label}</label>
-                <select class="form-select" id="${calcId}__${f.id}">${opts}</select>
+                <select class="form-select" id="${calculatorId}__${f.id}">${opts}</select>
                 ${help}
             </div>`;
         }
@@ -1210,14 +1247,14 @@ function buildFormHTML(def, calcId) {
         const stepAttr = f.step !== undefined ? `step="${f.step}"` : '';
         return `<div class="form-group">
             <label class="form-label">${f.label}</label>
-            <input type="number" class="form-input" id="${calcId}__${f.id}" value="${f.value}" ${minAttr} ${maxAttr} ${stepAttr}>
+            <input type="number" class="form-input" id="${calculatorId}__${f.id}" value="${f.value}" ${minAttr} ${maxAttr} ${stepAttr}>
             ${help}
         </div>`;
     }).join('');
 
     return `
         <div class="form-grid">${fieldsHTML}</div>
-        <button class="btn btn-primary btn-large" onclick="runCalculator('${calcId}')" style="width: 100%; justify-content: center; margin-top: 1rem;">
+        <button class="btn btn-primary btn-large" onclick="runCalculator('${calculatorId}')" style="width: 100%; justify-content: center; margin-top: 1rem;">
             ${def.buttonLabel || 'Calculate'}
         </button>
         <div id="resultsSection" class="results-section"></div>
@@ -1275,30 +1312,60 @@ function switchTab(event, tabName) {
 
 function initializeCalculatorForm() {
     // Add real-time validation and formatting
-    const inputs = document.querySelectorAll('#calculatorContent .form-input');
+    const inputs = document.querySelectorAll('#calculatorContent input[type="number"]');
     inputs.forEach(input => {
         input.addEventListener('blur', function() {
             validateInput(this);
         });
 
         input.addEventListener('input', function() {
-            // Remove error state on input
-            this.classList.remove('error');
+            if (this.classList.contains('error')) {
+                validateInput(this);
+            }
         });
     });
 }
 
 function validateInput(input) {
-    const value = parseFloat(input.value);
-    const min = parseFloat(input.getAttribute('min'));
-    const max = parseFloat(input.getAttribute('max'));
+    const rawValue = input.value.trim();
+    const value = rawValue === '' ? NaN : Number(rawValue);
+    const minAttribute = input.getAttribute('min');
+    const maxAttribute = input.getAttribute('max');
+    const min = minAttribute === null ? null : Number(minAttribute);
+    const max = maxAttribute === null ? null : Number(maxAttribute);
+    let message = '';
 
-    if (isNaN(value) || (!isNaN(min) && value < min) || (!isNaN(max) && value > max)) {
+    if (!Number.isFinite(value)) {
+        message = 'Enter a valid number.';
+    } else if (min !== null && value < min) {
+        message = `Enter a value of at least ${minAttribute}.`;
+    } else if (max !== null && value > max) {
+        message = `Enter a value no greater than ${maxAttribute}.`;
+    }
+
+    const formGroup = input.closest('.form-group');
+    let feedback = formGroup && formGroup.querySelector('.input-validation-error');
+    if (message) {
         input.classList.add('error');
+        input.setAttribute('aria-invalid', 'true');
+        if (formGroup && !feedback) {
+            feedback = document.createElement('span');
+            feedback.className = 'form-error input-validation-error active';
+            feedback.setAttribute('role', 'alert');
+            input.insertAdjacentElement('afterend', feedback);
+        }
+        if (feedback) {
+            feedback.textContent = message;
+            feedback.classList.add('active');
+        }
         return false;
     }
 
     input.classList.remove('error');
+    input.removeAttribute('aria-invalid');
+    if (feedback) {
+        feedback.remove();
+    }
     return true;
 }
 
@@ -1309,39 +1376,38 @@ function runCalculator(calculatorId) {
     // Read and validate all fields
     const values = {};
     let isValid = true;
+    let firstInvalidInput = null;
 
     def.fields.forEach(field => {
         const el = document.getElementById(`${calculatorId}__${field.id}`);
         if (!el) { isValid = false; return; }
-        el.classList.remove('error');
 
         if (field.type === 'select') {
             values[field.id] = el.value;
             return;
         }
 
-        const num = parseFloat(el.value);
-        if (isNaN(num)) {
-            el.classList.add('error');
+        if (!validateInput(el)) {
             isValid = false;
-        } else {
-            const min = parseFloat(el.getAttribute('min'));
-            const max = parseFloat(el.getAttribute('max'));
-            if ((!isNaN(min) && num < min) || (!isNaN(max) && num > max)) {
-                el.classList.add('error');
-                isValid = false;
-            }
+            firstInvalidInput ||= el;
         }
-        values[field.id] = num;
+        values[field.id] = Number(el.value);
     });
 
     if (!isValid) {
-        showToast('Please fill in all fields with valid numbers', 'error');
+        firstInvalidInput?.focus();
         return;
     }
 
     // Calculate
-    const results = def.calculate(values);
+    let results;
+    try {
+        results = def.calculate(values);
+    } catch (error) {
+        console.error(`Calculator failed: ${calculatorId}`, error);
+        showToast('Unable to calculate this result. Check the inputs and try again.', 'error');
+        return;
+    }
 
     // Render results
     const cardsHTML = results.cards.map(card => `
@@ -1419,6 +1485,7 @@ function openAuthModal(mode) {
     const modal = document.getElementById('authModal');
     const title = document.getElementById('authTitle');
     const footerText = document.getElementById('authFooterText');
+    const emailForm = document.getElementById('emailForm');
 
     if (mode === 'signup') {
         title.textContent = 'Create Your Free Account';
@@ -1428,6 +1495,9 @@ function openAuthModal(mode) {
         footerText.textContent = "Don't have an account?";
     }
 
+    emailForm.classList.add('active');
+    document.getElementById('emailError').classList.remove('active');
+    document.getElementById('passwordError').classList.remove('active');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
