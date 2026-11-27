@@ -557,6 +557,21 @@ const CalculatorRegistry = {
             const maxTotalDebt = grossMonthly * (v.dtiRatio / 100);
             const maxHousing = maxTotalDebt - v.monthlyDebts;
 
+            if (grossMonthly <= 0) {
+                return {
+                    header: 'Affordability Results',
+                    cards: [
+                        { label: 'Max Affordable Home Price', value: 'Unavailable', cls: 'negative', subtext: 'Gross annual income is required' },
+                        { label: 'Monthly Debt Payments', value: formatCurrency(v.monthlyDebts), subtext: 'Current monthly obligations' },
+                        { label: 'Allowable Housing Budget', value: 'Unavailable', cls: 'negative', subtext: 'Enter gross annual income to calculate' }
+                    ],
+                    recommendation: {
+                        title: '💡 Enter Your Income',
+                        body: '<p>Enter gross annual income greater than $0 to calculate an affordability estimate using your debt-to-income ratio.</p>'
+                    }
+                };
+            }
+
             if (maxHousing <= 0) {
                 return {
                     header: 'Affordability Results',
