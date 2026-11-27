@@ -57,10 +57,22 @@ FinanceWise is a professional-grade financial planning platform featuring 12+ in
 financewise/
 ├── index.html              # Main HTML file
 ├── financewise-app.js      # Core JavaScript application
-├── sitemap.xml            # SEO sitemap
-├── robots.txt             # Crawler instructions
+├── sitemap.xml             # Sitemap for the single canonical page
+├── robots.txt              # Crawler instructions and sitemap location
+├── favicon.svg             # Browser and bookmark icon
+├── site.webmanifest        # Site name, theme, and install metadata
+├── og-image.png            # Social sharing preview image
 └── README.md              # This file
 ```
+
+### Search and social sharing
+
+The site is currently a single-page application, so `sitemap.xml` lists only
+the canonical homepage. Calculator links are client-side hash links rather than
+separate crawlable pages; add sitemap entries only when corresponding public
+URLs return real pages. The Open Graph and Twitter metadata share
+`og-image.png` (1200 × 630). Keep its public URL and image dimensions in sync
+with the metadata in `index.html` when changing the preview image.
 
 ## 🚀 Quick Start
 
@@ -110,15 +122,15 @@ vercel
 
 ### 1. Google Analytics Setup
 
-1. Go to [analytics.google.com](https://analytics.google.com)
-2. Create new property
-3. Get your Measurement ID (G-XXXXXXXXXX)
-4. Replace in `index.html`:
-```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-    gtag('config', 'G-XXXXXXXXXX', {
-```
+The site is configured with the GA4 Measurement ID `G-JVJQR6M29L` in
+`index.html`. The page loads Google's `gtag.js` over HTTPS, initializes the
+data layer, and sends page-view and interaction events through `trackEvent()`.
+To use a different property, replace the ID in both the script URL and the
+`gtag('config', ...)` call.
+
+Before deploying, ensure your privacy notice and any consent requirements for
+your audience cover Google Analytics. The current static site does not provide
+a cookie-consent manager.
 
 ### 2. Google OAuth Setup
 
@@ -291,6 +303,8 @@ Tracked events:
 - HTTPS required for production
 - Session timeout (1 hour)
 - Local storage encryption recommended
+- Do not put API secrets, private keys, or passwords in frontend code or `.env` files used by the static site; browser-delivered configuration is public.
+- Local environment/credential files and common private-key formats are excluded by `.gitignore`. Keep any future server-side secrets in the hosting provider's secret manager.
 
 **Production Recommendations:**
 - Implement CSRF tokens

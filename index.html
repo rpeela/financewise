@@ -3,67 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Optimization with Schema.org -->
-    <title>FinanceWise - Professional Financial Planning Tools & Calculators | Buy vs Rent, Investment ROI, Retirement Planning</title>
-    <meta name="description" content="Free financial calculators with clear guides. Buy vs Rent Calculator, Mortgage Affordability, Cash on Cash Return, Debt Payoff Planner, Investment ROI, Retirement Calculator. Expert guidance with comprehensive ROI optimization strategies.">
-    <meta name="keywords" content="buy vs rent calculator, mortgage calculator, mortgage affordability calculator, cash on cash return calculator, debt payoff calculator, snowball vs avalanche method, emergency fund calculator, compound interest calculator, retirement calculator, 401k calculator, IRA calculator, investment return calculator, ROI calculator, refinance calculator, net worth calculator, credit card rewards calculator, payment method comparison, real estate investment calculator, rental property calculator, financial planning tools, personal finance calculator, wealth management, financial decision making">
-    
-    <link rel="canonical" href="https://financewise.pro">
+
+    <!-- Search and sharing metadata -->
+    <title>Free Financial Calculators &amp; Planning Tools | FinanceWise</title>
+    <meta name="description" content="Compare buying vs. renting, plan debt payoff, estimate mortgage affordability, and explore investing and retirement scenarios with free FinanceWise calculators.">
+    <link rel="canonical" href="https://financewise.pro/">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="Ravi Kumar Peela">
-    
+    <meta name="theme-color" content="#1a3a2a">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="/site.webmanifest">
+
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://financewise.pro">
-    <meta property="og:title" content="FinanceWise - Professional Financial Planning Calculators">
-    <meta property="og:description" content="Make smarter financial decisions with 12+ professional calculators. Free tools with expert guidance for real estate, investment, debt management, and retirement planning.">
+    <meta property="og:url" content="https://financewise.pro/">
+    <meta property="og:title" content="Free Financial Calculators &amp; Planning Tools | FinanceWise">
+    <meta property="og:description" content="Compare buying vs. renting, plan debt payoff, and explore mortgage, investing, and retirement scenarios with free financial calculators.">
     <meta property="og:site_name" content="FinanceWise">
-    <meta property="og:image" content="https://financewise.pro/og-image.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://financewise.pro/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="FinanceWise free financial calculators and planning tools">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FinanceWise - Financial Planning Calculators">
-    <meta name="twitter:description" content="Professional financial calculators with comprehensive guides and ROI optimization strategies.">
-    <meta name="twitter:image" content="https://financewise.pro/twitter-image.jpg">
-    <meta name="twitter:creator" content="@ravipeela">
+    <meta name="twitter:title" content="Free Financial Calculators &amp; Planning Tools | FinanceWise">
+    <meta name="twitter:description" content="Compare buying vs. renting, plan debt payoff, and explore mortgage, investing, and retirement scenarios with free financial calculators.">
+    <meta name="twitter:image" content="https://financewise.pro/og-image.png">
+    <meta name="twitter:image:alt" content="FinanceWise free financial calculators and planning tools">
     
-    <!-- Schema.org Structured Data -->
+    <!-- Structured data describes the free tools without unverifiable reviews or ratings. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "FinanceWise",
-      "description": "Professional financial planning calculators and tools",
-      "url": "https://financewise.pro",
-      "applicationCategory": "FinanceApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Ravi Kumar Peela"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "50000",
-        "bestRating": "5",
-        "worstRating": "1"
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://financewise.pro/#website",
+          "name": "FinanceWise",
+          "url": "https://financewise.pro/",
+          "inLanguage": "en-US",
+          "description": "Free financial calculators for housing, debt, investing, and retirement planning."
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://financewise.pro/#app",
+          "name": "FinanceWise Financial Calculators",
+          "url": "https://financewise.pro/",
+          "description": "Free interactive calculators for comparing buying and renting, planning debt payoff, estimating mortgage affordability, and exploring savings and investment scenarios.",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Any",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Ravi Kumar Peela"
+          },
+          "isPartOf": {
+            "@id": "https://financewise.pro/#website"
+          }
+        }
+      ]
     }
     </script>
     
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVJQR6M29L"></script>
     <script>
-        // Analytics: add a Google Analytics ID here to enable tracking.
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function() {
+            window.dataLayer.push(arguments);
+        };
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-JVJQR6M29L', {
+            'send_page_view': true,
+            'anonymize_ip': true
+        });
+
         function trackEvent(category, action, label, value) {
             if (typeof window.gtag === 'function') {
-                window.gtag('event', action, { event_category: category, event_label: label, value: value });
+                window.gtag('event', action, {
+                    'event_category': category,
+                    'event_label': label,
+                    'value': value
+                });
             }
         }
     </script>
     
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1268,15 +1303,14 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span>⭐</span>
-                    <span>Trusted by 500,000+ Professionals</span>
+                    <span>Free financial planning calculators</span>
                 </div>
                 <h1>
-                    Make <span class="hero-highlight">Smarter</span><br>
-                    Financial Decisions
+                    Plan Your <span class="hero-highlight">Financial</span><br>
+                    Next Steps
                 </h1>
                 <p class="hero-subtitle">
-                    Professional-grade calculators with comprehensive guides and ROI optimization strategies. 
-                    From real estate to retirement planning—every decision backed by data.
+                    Compare buying with renting, estimate mortgage affordability, plan debt payoff, and project savings with free calculators and practical guides.
                 </p>
                 <div class="hero-cta">
                     <button class="btn btn-primary btn-large" onclick="document.querySelector('.calculators-grid').scrollIntoView({behavior: 'smooth'}); trackEvent('Navigation', 'click', 'Hero CTA - Explore');">
@@ -1289,15 +1323,15 @@
                 <div class="hero-stats">
                     <div class="stat">
                         <div class="stat-number">12+</div>
-                        <div class="stat-label">Pro Tools</div>
+                        <div class="stat-label">Calculators</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">$2B+</div>
-                        <div class="stat-label">Analyzed</div>
+                        <div class="stat-number">Free</div>
+                        <div class="stat-label">To use</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">4.9★</div>
-                        <div class="stat-label">Rating</div>
+                        <div class="stat-number">No</div>
+                        <div class="stat-label">Sign-in required</div>
                     </div>
                 </div>
             </div>
@@ -1306,20 +1340,20 @@
                     <div style="margin-bottom: 1.5rem;">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
                         <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--forest); margin-bottom: 0.5rem;">
-                            Professional Calculators
+                            Financial Calculators
                         </div>
                         <div style="color: var(--text-secondary);">
-                            Comprehensive analysis with expert guidance
+                            Clear estimates for everyday money decisions
                         </div>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div style="padding: 1rem; background: var(--cream); border-radius: 8px;">
-                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.25rem;">ROI Analysis</div>
-                            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">$50K+</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Housing</div>
+                            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">Buy or rent</div>
                         </div>
                         <div style="padding: 1rem; background: var(--cream); border-radius: 8px;">
-                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Optimization</div>
-                            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">Expert</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Debt payoff</div>
+                            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold);">Plan ahead</div>
                         </div>
                     </div>
                 </div>
@@ -1334,8 +1368,7 @@
                 <div class="section-badge">Financial Tools</div>
                 <h2 class="section-title">Professional Calculators</h2>
                 <p class="section-subtitle">
-                    Enterprise-grade tools with detailed guides, pros & cons analysis, 
-                    and comprehensive ROI optimization strategies
+                    Explore calculators for housing, debt, real estate, saving, investing, and retirement.
                 </p>
             </div>
 
@@ -1354,12 +1387,12 @@
                     </div>
                     <div class="card-footer">
                         <div class="card-metric">
-                            <span>Avg. Decision Value</span>
-                            <span class="card-metric-value">$50,000+</span>
+                            <span>Calculator Type</span>
+                            <span class="card-metric-value">Buy or rent</span>
                         </div>
                         <div class="card-metric">
-                            <span>User Rating</span>
-                            <span class="card-metric-value">⭐ 4.9/5.0</span>
+                            <span>Planning Horizon</span>
+                            <span class="card-metric-value">Long term</span>
                         </div>
                     </div>
                 </div>
@@ -1388,77 +1421,233 @@
                     </div>
                 </div>
 
-
-                <div class="calculator-card" onclick="openCalculator('cash-on-cash'); trackEvent('Calculator', 'open', 'Cash on Cash Return');">
-                    <div class="card-icon">🏘️</div>
-                    <h3 class="card-title">Cash on Cash Return</h3>
-                    <p class="card-description">Measure annual cash flow against the cash you invest in a rental property, plus cap rate.</p>
-                    <div class="card-tags"><span class="tag">Real Estate</span></div>
+                <!-- Mortgage Affordability Calculator -->
+                <div class="calculator-card" data-category="real-estate" onclick="openCalculator('mortgage-affordability'); trackEvent('Calculator', 'open', 'Mortgage Affordability');">
+                    <div class="card-icon">🏦</div>
+                    <h3 class="card-title">Mortgage Affordability Calculator</h3>
+                    <p class="card-description">
+                        Find out exactly how much house you can afford based on your income, debts, down payment and today's rates — using the same DTI math lenders use.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Real Estate</span>
+                        <span class="tag">Mortgage</span>
+                        <span class="tag">Budgeting</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Based On</span>
+                            <span class="card-metric-value">DTI Ratio</span>
+                        </div>
+                        <div class="card-metric">
+                            <span>Importance</span>
+                            <span class="card-metric-value">Essential</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="calculator-card" onclick="openCalculator('credit-card'); trackEvent('Calculator', 'open', 'Credit Card Benefits Optimizer');">
-                    <div class="card-icon">💳</div>
-                    <h3 class="card-title">Credit Card Benefits Optimizer</h3>
-                    <p class="card-description">See the real yearly value of your card rewards after fees and interest.</p>
-                    <div class="card-tags"><span class="tag">Rewards</span></div>
+                <!-- Cash on Cash Return Calculator -->
+                <div class="calculator-card" data-category="real-estate" onclick="openCalculator('cash-on-cash'); trackEvent('Calculator', 'open', 'Cash on Cash Return');">
+                    <div class="card-icon">💰</div>
+                    <h3 class="card-title">Cash on Cash Return Calculator</h3>
+                    <p class="card-description">
+                        Evaluate rental properties like a professional investor: cash flow, cap rate, and cash on cash return after vacancy, expenses and financing.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Real Estate</span>
+                        <span class="tag">Rental</span>
+                        <span class="tag">ROI Analysis</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Target Return</span>
+                            <span class="card-metric-value">8–12%</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="calculator-card" onclick="openCalculator('debt-payoff'); trackEvent('Calculator', 'open', 'Debt Payoff Planner');">
+                <!-- Debt Payoff Calculator -->
+                <div class="calculator-card" data-category="debt" onclick="openCalculator('debt-payoff'); trackEvent('Calculator', 'open', 'Debt Payoff');">
                     <div class="card-icon">🎯</div>
-                    <h3 class="card-title">Debt Payoff Planner</h3>
-                    <p class="card-description">Compare snowball vs avalanche strategies and see your debt-free date.</p>
-                    <div class="card-tags"><span class="tag">Debt</span></div>
+                    <h3 class="card-title">Debt Payoff Calculator</h3>
+                    <p class="card-description">
+                        See exactly when your debt disappears and how much an extra payment saves you in interest and months. Plan your avalanche or snowball strategy.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Debt</span>
+                        <span class="tag">Snowball</span>
+                        <span class="tag">Avalanche</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Avg. Interest Saved</span>
+                            <span class="card-metric-value">$1,000+</span>
+                        </div>
+                        <div class="card-metric">
+                            <span>Importance</span>
+                            <span class="card-metric-value">Essential</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="calculator-card" onclick="openCalculator('emergency-fund'); trackEvent('Calculator', 'open', 'Emergency Fund Calculator');">
-                    <div class="card-icon">🛟</div>
+                <!-- Emergency Fund Calculator -->
+                <div class="calculator-card" data-category="savings" onclick="openCalculator('emergency-fund'); trackEvent('Calculator', 'open', 'Emergency Fund');">
+                    <div class="card-icon">🚨</div>
                     <h3 class="card-title">Emergency Fund Calculator</h3>
-                    <p class="card-description">Get a personalized safety-net target and time to reach it.</p>
-                    <div class="card-tags"><span class="tag">Savings</span></div>
+                    <p class="card-description">
+                        Get a personalized savings target based on your income stability, dependents and health coverage — plus a month-by-month plan to reach it.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Savings</span>
+                        <span class="tag">Safety Net</span>
+                        <span class="tag">Planning</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Recommended</span>
+                            <span class="card-metric-value">3–12 Mo.</span>
+                        </div>
+                        <div class="card-metric">
+                            <span>Importance</span>
+                            <span class="card-metric-value">First Step</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="calculator-card" onclick="openCalculator('mortgage-affordability'); trackEvent('Calculator', 'open', 'Mortgage Affordability');">
-                    <div class="card-icon">🔑</div>
-                    <h3 class="card-title">Mortgage Affordability</h3>
-                    <p class="card-description">Find your true buying power using the 28/36 rule.</p>
-                    <div class="card-tags"><span class="tag">Real Estate</span></div>
+                <!-- Retirement Planning Calculator -->
+                <div class="calculator-card" data-category="retirement" onclick="openCalculator('retirement'); trackEvent('Calculator', 'open', 'Retirement Planning');">
+                    <div class="card-icon">🌅</div>
+                    <h3 class="card-title">Retirement Planning Calculator</h3>
+                    <p class="card-description">
+                        Project your nest egg to retirement age, see it in today's dollars, and check the sustainable income the 4% rule supports.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Retirement</span>
+                        <span class="tag">401k</span>
+                        <span class="tag">Long-Term</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Method</span>
+                            <span class="card-metric-value">4% Rule</span>
+                        </div>
+                        <div class="card-metric">
+                            <span>Calculator Type</span>
+                            <span class="card-metric-value">Compound growth</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="calculator-card" onclick="openCalculator('retirement'); trackEvent('Calculator', 'open', 'Retirement Savings Planner');">
-                    <div class="card-icon">🏖️</div>
-                    <h3 class="card-title">Retirement Savings Planner</h3>
-                    <p class="card-description">Project your 401k/IRA balance and compare it to your retirement goal.</p>
-                    <div class="card-tags"><span class="tag">Retirement</span></div>
+                <!-- Net Worth Calculator -->
+                <div class="calculator-card" data-category="planning" onclick="openCalculator('net-worth'); trackEvent('Calculator', 'open', 'Net Worth');">
+                    <div class="card-icon">⚖️</div>
+                    <h3 class="card-title">Net Worth Calculator</h3>
+                    <p class="card-description">
+                        Build a complete balance sheet of assets and liabilities, see your true net worth, and benchmark your debt-to-asset ratio.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Planning</span>
+                        <span class="tag">Balance Sheet</span>
+                        <span class="tag">Tracking</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Update</span>
+                            <span class="card-metric-value">Quarterly</span>
+                        </div>
+                        <div class="card-metric">
+                            <span>Importance</span>
+                            <span class="card-metric-value">Essential</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="calculator-card" onclick="openCalculator('net-worth'); trackEvent('Calculator', 'open', 'Net Worth Tracker');">
-                    <div class="card-icon">💎</div>
-                    <h3 class="card-title">Net Worth Tracker</h3>
-                    <p class="card-description">Total your assets and liabilities for a complete wealth snapshot.</p>
-                    <div class="card-tags"><span class="tag">Wealth</span></div>
-                </div>
-
-                <div class="calculator-card" onclick="openCalculator('refinance'); trackEvent('Calculator', 'open', 'Refinance Analyzer');">
+                <!-- Refinance Calculator -->
+                <div class="calculator-card" data-category="real-estate" onclick="openCalculator('refinance'); trackEvent('Calculator', 'open', 'Refinance');">
                     <div class="card-icon">🔄</div>
-                    <h3 class="card-title">Refinance Analyzer</h3>
-                    <p class="card-description">Calculate monthly savings and the break-even point of refinancing.</p>
-                    <div class="card-tags"><span class="tag">Mortgage</span></div>
+                    <h3 class="card-title">Refinance Calculator</h3>
+                    <p class="card-description">
+                        Compare your current mortgage against a new rate and term: monthly savings, break-even point on closing costs, and lifetime interest impact.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Mortgage</span>
+                        <span class="tag">Break-Even</span>
+                        <span class="tag">Savings</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Rule of Thumb</span>
+                            <span class="card-metric-value">0.75% Drop</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="calculator-card" onclick="openCalculator('investment-return'); trackEvent('Calculator', 'open', 'Investment Return Calculator');">
+                <!-- Investment Return Calculator -->
+                <div class="calculator-card" data-category="investment" onclick="openCalculator('investment-return'); trackEvent('Calculator', 'open', 'Investment Return');">
                     <div class="card-icon">📊</div>
                     <h3 class="card-title">Investment Return Calculator</h3>
-                    <p class="card-description">Find total ROI, annualized return, and after-tax gains.</p>
-                    <div class="card-tags"><span class="tag">Investment</span></div>
+                    <p class="card-description">
+                        Measure true investment performance with simple ROI and annualized return (CAGR), even with additional contributions along the way.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Investment</span>
+                        <span class="tag">ROI</span>
+                        <span class="tag">CAGR</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Benchmark</span>
+                            <span class="card-metric-value">S&P 500</span>
+                        </div>
+                        <div class="card-metric">
+                            <span>Importance</span>
+                            <span class="card-metric-value">Essential</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="calculator-card" onclick="openCalculator('payment-method'); trackEvent('Calculator', 'open', 'Payment Method Comparator');">
-                    <div class="card-icon">💵</div>
-                    <h3 class="card-title">Payment Method Comparator</h3>
-                    <p class="card-description">Compare the yearly value of paying with cash, debit, or credit.</p>
-                    <div class="card-tags"><span class="tag">Spending</span></div>
+                <!-- Credit Card Rewards Calculator -->
+                <div class="calculator-card" data-category="credit" onclick="openCalculator('credit-card-rewards'); trackEvent('Calculator', 'open', 'Credit Card Rewards');">
+                    <div class="card-icon">💳</div>
+                    <h3 class="card-title">Credit Card Rewards Calculator</h3>
+                    <p class="card-description">
+                        Calculate your true effective reward rate across dining, groceries and gas categories — after redemption value and annual fees.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Credit Cards</span>
+                        <span class="tag">Rewards</span>
+                        <span class="tag">Optimization</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Good Target</span>
+                            <span class="card-metric-value">2%+ Net</span>
+                        </div>
+                    </div>
                 </div>
-                <!-- Add more calculator cards as needed -->
+
+                <!-- Payment Method Comparison Calculator -->
+                <div class="calculator-card" data-category="credit" onclick="openCalculator('payment-method'); trackEvent('Calculator', 'open', 'Payment Method Comparison');">
+                    <div class="card-icon">💵</div>
+                    <h3 class="card-title">Payment Method Comparison</h3>
+                    <p class="card-description">
+                        Compare credit, debit and cash on your real spending — including the interest cost of carried balances that quietly erases rewards.
+                    </p>
+                    <div class="card-tags">
+                        <span class="tag">Credit vs Debit</span>
+                        <span class="tag">Cash Back</span>
+                        <span class="tag">Comparison</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-metric">
+                            <span>Key Insight</span>
+                            <span class="card-metric-value">Interest Trap</span>
+                        </div>
+                        <div class="card-metric">
+                            <span>Importance</span>
+                            <span class="card-metric-value">Essential</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1475,9 +1664,9 @@
                 </div>
                 
                 <div class="modal-tabs">
-                    <button class="modal-tab active" onclick="switchTab(event, 'calculator')">Calculator</button>
-                    <button class="modal-tab" onclick="switchTab(event, 'guide')">How to Use</button>
-                    <button class="modal-tab" onclick="switchTab(event, 'results')">Results</button>
+                    <button class="modal-tab active" data-tab="calculator" onclick="switchTab(event, 'calculator')">Calculator</button>
+                    <button class="modal-tab" data-tab="guide" onclick="switchTab(event, 'guide')">How to Use</button>
+                    <button class="modal-tab" data-tab="results" onclick="switchTab(event, 'results')">Results</button>
                 </div>
             </div>
 
@@ -1511,30 +1700,58 @@
             </div>
 
             <div class="auth-methods">
-                <button class="auth-button" type="button" onclick="signInWithGoogle(); trackEvent('Auth', 'click', 'Google Sign-in');">
-                    <span style="font-size: 1.5rem;">🔐</span>
+                <div id="g_id_onload"
+                     data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+                     data-callback="handleGoogleSignIn">
+                </div>
+                <button class="auth-button" onclick="signInWithGoogle(); trackEvent('Auth', 'click', 'Google Sign-in');">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
                     Continue with Google
+                </button>
+
+                <button class="auth-button" onclick="showEmailForm(); trackEvent('Auth', 'click', 'Email Form');">
+                    <span style="font-size: 1.5rem;">📧</span>
+                    Continue with Email
+                </button>
+
+                <button class="auth-button" onclick="showPhoneForm(); trackEvent('Auth', 'click', 'Phone Form');">
+                    <span style="font-size: 1.5rem;">📱</span>
+                    Continue with Phone
                 </button>
             </div>
 
-            <div class="divider">or use email</div>
+            <div class="divider">or</div>
 
-            <form class="auth-form active" id="emailForm" onsubmit="handleEmailAuth(event)">
-                <div class="form-group" id="nameGroup" style="display:none;">
-                    <label class="form-label" for="authName">Full Name</label>
-                    <input type="text" class="form-input" id="authName" placeholder="Jane Doe" autocomplete="name">
+            <form class="auth-form" id="emailForm" onsubmit="handleEmailAuth(event)">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="authEmail" placeholder="your@email.com" required>
+                    <span class="form-error" id="emailError">Please enter a valid email</span>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="authEmail">Email</label>
-                    <input type="email" class="form-input" id="authEmail" placeholder="your@email.com" required autocomplete="email">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="authPassword" placeholder="Min 8 characters" required minlength="8">
+                    <span class="form-error" id="passwordError">Password must be at least 8 characters</span>
                 </div>
-                <div class="form-group" id="passwordGroup">
-                    <label class="form-label" for="authPassword">Password</label>
-                    <input type="password" class="form-input" id="authPassword" placeholder="Min 8 characters" minlength="8" autocomplete="current-password">
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="emailAuthBtn">
+                    Continue
+                </button>
+            </form>
+
+            <form class="auth-form" id="phoneForm" onsubmit="handlePhoneAuth(event)">
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" id="authPhone" placeholder="+1 (555) 000-0000" required pattern="[\+]?[0-9]{10,}">
+                    <span class="form-error" id="phoneError">Please enter a valid phone number</span>
                 </div>
-                <span class="form-error" id="authError" role="alert"></span>
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="emailAuthBtn">Sign In</button>
-                <p style="text-align:center;margin-top:0.75rem;"><a href="#" class="auth-link" id="forgotLink" onclick="showForgotPassword(event)">Forgot password?</a></p>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" id="phoneAuthBtn">
+                    Send Verification Code
+                </button>
             </form>
 
             <div class="auth-footer">
@@ -1551,8 +1768,7 @@
                 <div class="footer-brand">
                     <h4>FinanceWise</h4>
                     <p>
-                        Free, easy-to-use financial planning tools. 
-                        Make informed decisions with expert calculators and comprehensive guidance.
+                        Free financial calculators help you compare scenarios, plan ahead, and make informed decisions.
                     </p>
                 </div>
                 <div class="footer-section">
@@ -1594,6 +1810,5 @@
     </footer>
 
     <script src="financewise-app.js"></script>
-    <script type="module" src="auth.js"></script>
 </body>
 </html>
