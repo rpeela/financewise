@@ -89,14 +89,14 @@ function remainingBalance(principal, annualRatePct, loanTermYears, monthsElapsed
 function payoffSchedule(balance, aprPct, payment) {
     const r = aprPct / 100 / 12;
     let bal = balance, interest = 0, months = 0;
-    if (payment <= bal * r) return null;
+    if (payment <= bal * r) return { months, interest, paidOff: false };
     while (bal > 0 && months < 1200) {
         const int = bal * r;
         interest += int;
         bal = bal + int - payment;
         months++;
     }
-    return { months, interest };
+    return { months, interest, paidOff: bal <= 0 };
 }
 
 // Solve for the annualized return (CAGR) of an investment with annual contributions via bisection.
@@ -687,20 +687,36 @@ const CalculatorRegistry = {
         calculate: function(v) {
             const current = payoffSchedule(v.balance, v.apr, v.monthlyPayment);
             const accelerated = payoffSchedule(v.balance, v.apr, v.monthlyPayment + v.extraPayment);
+            const currentPaidOff = current.paidOff;
+            const acceleratedPaidOff = accelerated.paidOff;
+            const monthlyInterest = v.balance * v.apr / 100 / 12;
 
-            if (!current) {
+            if (!currentPaidOff || !acceleratedPaidOff) {
+                const currentStatus = currentPaidOff
+                    ? `${current.months} months`
+                    : v.monthlyPayment <= monthlyInterest
+                        ? 'Does not reduce the balance'
+                        : 'Not paid off within 100 years';
+                const acceleratedPayment = v.monthlyPayment + v.extraPayment;
+                const acceleratedStatus = acceleratedPaidOff
+                    ? `${accelerated.months} months`
+                    : acceleratedPayment <= monthlyInterest
+                        ? 'Does not reduce the balance'
+                        : 'Not paid off within 100 years';
+
                 return {
                     header: 'Payoff Analysis',
                     cards: [
-                        { label: 'Status', value: 'Never Paid Off', cls: 'negative', subtext: 'Payment below monthly interest' },
-                        { label: 'Monthly Interest', value: formatCurrency(v.balance * v.apr / 100 / 12), subtext: `At ${v.apr}% APR` },
-                        { label: 'Minimum Required Payment', value: formatCurrency(v.balance * v.apr / 100 / 12 + 1), cls: 'negative', subtext: 'Just to reduce the balance' }
+                        { label: 'Current Payment Plan', value: currentPaidOff ? currentStatus : 'Not Paid Off', cls: currentPaidOff ? '' : 'negative', subtext: currentPaidOff ? 'Estimated payoff time' : currentStatus },
+                        { label: 'With Extra Payment', value: acceleratedPaidOff ? acceleratedStatus : 'Not Paid Off', cls: acceleratedPaidOff ? 'positive' : 'negative', subtext: acceleratedPaidOff ? 'Estimated payoff time' : acceleratedStatus },
+                        { label: 'Current Plan Interest', value: currentPaidOff ? formatCurrency(current.interest) : 'Unavailable', subtext: currentPaidOff ? 'Total interest through payoff' : 'Plan does not finish' },
+                        { label: 'Extra Payment Plan Interest', value: acceleratedPaidOff ? formatCurrency(accelerated.interest) : 'Unavailable', subtext: acceleratedPaidOff ? 'Total interest through payoff' : 'Plan does not finish' }
                     ],
                     recommendation: {
-                        title: '💡 Recommendation: Increase Your Payment',
-                        body: `<p>Your payment of <strong>${formatCurrency(v.monthlyPayment)}</strong> is less than the monthly interest of
-                        <strong>${formatCurrency(v.balance * v.apr / 100 / 12)}</strong> at ${v.apr}% APR, so this debt would never be paid off.</p>
-                        <p>Increase your payment above ${formatCurrency(v.balance * v.apr / 100 / 12)} — or pursue a lower interest rate through consolidation or a balance transfer.</p>`
+                        title: '💡 Payoff Plan Status',
+                        body: `<p>At ${formatCurrency(v.monthlyPayment)} per month, the current plan: <strong>${currentStatus}</strong>.</p>
+                        <p>With an extra ${formatCurrency(v.extraPayment)} per month, the plan: <strong>${acceleratedStatus}</strong>.</p>
+                        <p>A payoff time or total interest is shown only when the plan fully pays off the balance within 100 years.</p>`
                     }
                 };
             }
@@ -722,17 +738,17 @@ const CalculatorRegistry = {
                     <strong>${current.months} months</strong> and costs <strong>${formatCurrency(current.interest)}</strong> in interest.</p>
                     <p>Adding ${formatCurrency(v.extraPayment)} per month pays it off
                     <strong>${savedMonths} months sooner</strong> and saves <strong>${formatCurrency(savedInterest)}</strong> in interest.</p>
-                    <p><strong>Strategy tip:</strong> Use the avalanche method (highest APR first) to minimize interest, or the snowball method (smallest balance first) for motivation wins.</p>`
+                    <p><strong>Tip:</strong> Compare the extra-payment plan against your current payment to see how much sooner this balance could be paid off.</p>`
                 }
             };
         },
         guide: `
             <h3>Getting Out of Debt Faster</h3>
-            <p>Every extra dollar above the interest charge reduces your principal, which shrinks every future interest charge.</p>
+            <p>This calculator models one total debt balance and compares your current monthly payment with an extra-payment plan.</p>
             <h4>Key Concepts:</h4>
             <ul>
-                <li><strong>Avalanche Method:</strong> Pay minimums on everything, extra on the highest APR — mathematically optimal</li>
-                <li><strong>Snowball Method:</strong> Extra on the smallest balance first — builds momentum</li>
+                <li><strong>Extra Payments:</strong> Payments above monthly interest reduce your balance faster</li>
+                <li><strong>Payoff Estimate:</strong> A payoff time is shown only when the balance reaches zero within the projection horizon</li>
                 <li><strong>Minimum Payment Trap:</strong> Paying only minimums on high-APR debt can take decades</li>
                 <li><strong>Balance Transfers:</strong> 0% APR offers can pause interest, but watch transfer fees</li>
             </ul>`
