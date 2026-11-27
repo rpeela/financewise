@@ -1192,7 +1192,7 @@ function cashDiscountPctLabel(pct) {
 
 let currentCalculator = null;
 
-function buildFormHTML(def) {
+function buildFormHTML(def, calcId) {
     const fieldsHTML = def.fields.map(f => {
         const help = f.help ? `<span class="form-help">${f.help}</span>` : '';
         if (f.type === 'select') {
@@ -1201,7 +1201,7 @@ function buildFormHTML(def) {
             ).join('');
             return `<div class="form-group">
                 <label class="form-label">${f.label}</label>
-                <select class="form-select" id="${def.id}__${f.id}">${opts}</select>
+                <select class="form-select" id="${calcId}__${f.id}">${opts}</select>
                 ${help}
             </div>`;
         }
@@ -1210,14 +1210,14 @@ function buildFormHTML(def) {
         const stepAttr = f.step !== undefined ? `step="${f.step}"` : '';
         return `<div class="form-group">
             <label class="form-label">${f.label}</label>
-            <input type="number" class="form-input" id="${def.id}__${f.id}" value="${f.value}" ${minAttr} ${maxAttr} ${stepAttr}>
+            <input type="number" class="form-input" id="${calcId}__${f.id}" value="${f.value}" ${minAttr} ${maxAttr} ${stepAttr}>
             ${help}
         </div>`;
     }).join('');
 
     return `
         <div class="form-grid">${fieldsHTML}</div>
-        <button class="btn btn-primary btn-large" onclick="runCalculator('${def.id}')" style="width: 100%; justify-content: center; margin-top: 1rem;">
+        <button class="btn btn-primary btn-large" onclick="runCalculator('${calcId}')" style="width: 100%; justify-content: center; margin-top: 1rem;">
             ${def.buttonLabel || 'Calculate'}
         </button>
         <div id="resultsSection" class="results-section"></div>
@@ -1237,7 +1237,7 @@ function openCalculator(calculatorId) {
 
     modalIcon.textContent = def.icon;
     modalTitle.textContent = def.title;
-    calculatorContent.innerHTML = buildFormHTML(def);
+    calculatorContent.innerHTML = buildFormHTML(def, calculatorId);
     guideContent.innerHTML = def.guide;
 
     // Clear any results from a previously opened calculator
